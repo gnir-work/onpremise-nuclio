@@ -7,8 +7,8 @@ You will need a couple of things for on premise nuclio
 2. The downloadable images that the make file will later push to the local image
 
 In order to setup a on premise nuclio just run 
-1. make setup-local-registry
-2. make start
+1. `make setup-local-registry`
+2. `make start`
 
 ## Python custom runtime
 All nuclio needs for a custom run time is an image with python3 installed.
