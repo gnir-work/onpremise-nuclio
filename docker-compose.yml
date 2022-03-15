@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+    registry:
+        image: registry:2
+        volumes:
+          - /tmp/registry:/var/lib/registry
+        ports:
+          - "5000:5000"
+    nuclio-dashboard:
+        container_name: "nuclio_dashboard"
+        image: localhost:5000/nuclio/dashboard:stable-amd64
+        ports:
+          - "8070:8070"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - /tmp:/tmp
+        environment:
+          - NUCLIO_DASHBOARD_REGISTRY_URL=localhost:5000
+          - NUCLIO_DASHBOARD_OFFLINE=true
+          - NUCLIO_TEMPLATES_GIT_REPOSITORY=none
+          - NUCLIO_DASHBOARD_RUN_REGISTRY_URL=localhost:5000
+          - NUCLIO_DASHBOARD_DEPENDANT_IMAGE_REGISTRY_URL=localhost:5000
